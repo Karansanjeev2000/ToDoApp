@@ -1,0 +1,70 @@
+<html style="display:inline;">
+<mat-toolbar>
+  <mat-toolbar-row>
+  <button mat-icon-button  (click)="sidenav.toggle();" appearance="legacy"><mat-icon >vertical_split</mat-icon></button>
+    <h3>Filter:</h3>
+      <mat-button-toggle-group color="accent" name="favoriteColor" appearance="legacy" aria-label="Favorite Color" [(ngModel)]="searchInput" style="height:40px; width: fit-content;font-size: small;">
+      <mat-button-toggle value="Fitness" (click)="onfilter()"  >Fitness <mat-icon>fitness_center</mat-icon></mat-button-toggle>
+      <mat-button-toggle value="Work" (click)="onfilter()"     >Work <mat-icon>work</mat-icon></mat-button-toggle>
+      <mat-button-toggle value="Home" (click)="onfilter()"     >Home <mat-icon>home</mat-icon></mat-button-toggle>
+      <mat-button-toggle value="Shopping" (click)="onfilter()" >Shopping <mat-icon>shopping_cart</mat-icon></mat-button-toggle>
+      <mat-button-toggle value="others" (click)="onfilter()"   >others <mat-icon> import_contacts</mat-icon></mat-button-toggle>
+        </mat-button-toggle-group>
+        <div id="searchcomp">
+    <app-search (searchTextChanged)="onSearchTextChanged($event)"></app-search></div>
+    <button mat-raised-button style="background-color: rgb(223, 103, 103);" (click)="onClickFunction()">ADD note</button>
+</mat-toolbar-row>
+</mat-toolbar>
+<mat-sidenav-container >
+<mat-sidenav  #sidenav opened="true" mode="side">
+<mat-nav-list >
+  <a mat-list-item  routerLink="../main" matTooltip="HOME" id="hov"><mat-icon id="iclass">home</mat-icon></a>
+  <a mat-list-item  routerLink="../high" matTooltip="PRIORITIZE"><mat-icon id="iclass">priority_high</mat-icon></a>
+  <a mat-list-item  routerLink="../today" matTooltip="TODAYS TASK"><mat-icon id="iclass">today</mat-icon></a>
+  <a mat-list-item routerLink="../archive"matTooltip="YOUR ARCHIVES" ><mat-icon id="iclass">archive</mat-icon></a>
+</mat-nav-list>
+</mat-sidenav>
+<mat-sidenav-content>
+  <div style="height:88vh;">
+  
+    <body style="width: 100%; height:100%; background-color:white">
+      <!--Generate Cards Dynamically -->
+    <div style="display: flex;flex-wrap: wrap; z-index:8;text-align: center;">
+    <mat-card *ngFor="let value of filteredNotes" style="background-color:white; box-shadow:2px solid black;">
+        <mat-card-header style="height:40px;text-align:center;font-size:x-large;">{{value.taskName}}</mat-card-header>
+        <div style="display: flex;">
+        <button mat-stroked-button color="primary" style="font-size: small; width:fit-content;">Satus:{{value.status}}</button>
+        <button mat-raised-button color="disabled" style="width: fit-content;"><mat-icon style="color:chocolate;">notification_important</mat-icon>Priority:{{value.priority}}</button>
+        </div>
+        <!-- <img mat-card-xl-image src={{value.imageurl}} > -->
+        <mat-card-content class="raised" style="font-family:monospace;font-weight: bold;font-size: large;">{{value.category}}<mat-icon style="color: chocolate;margin-top:10px;">loyalty</mat-icon></mat-card-content>
+        <mat-card-content class="raised" style="text-decoration: underline;font-size: medium;color: black;margin-top: 10px;">Desc:{{value.taskDesc}}</mat-card-content>
+  
+        <mat-card-footer style="margin-bottom:10px;">
+        
+        </mat-card-footer>
+    <mat-card-footer>
+        <button mat-raised-button color="primary" id="datebut"><mat-icon>calendar_today</mat-icon>Due:
+            {{value.dueDate | date}}</button>
+      <a routerLink="../edit/{{value.taskid}}">
+            <button mat-flat-button color="accent" style="margin-left:7px;background-color: rgb(223, 103, 103);" matTooltip="EDIT THIS" >
+              <mat-icon>edit</mat-icon>
+            </button>
+      </a>
+      <button mat-flat-button color="accent" style="margin-left:7px;background-color: rgb(223, 103, 103);"  (click)="setStatus(value.taskid)" matTooltip="ARCHIVE THIS" >
+        <mat-icon >archive</mat-icon>
+      </button>
+      
+    </mat-card-footer>
+    </mat-card>
+    </div>
+    </body>
+  
+  
+  </div>
+</mat-sidenav-content>
+</mat-sidenav-container>
+
+    <!--filter bar ends  -->
+    
+  </html>

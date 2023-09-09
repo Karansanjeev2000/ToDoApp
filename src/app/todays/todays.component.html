@@ -1,0 +1,58 @@
+<p>todays works!</p>
+
+<html style="display:inline;">
+<mat-toolbar>
+  <mat-toolbar-row>
+  <button mat-icon-button  (click)="sidenav.toggle();"><mat-icon >vertical_split</mat-icon></button>
+    <h3>Todays To do</h3>
+</mat-toolbar-row>
+</mat-toolbar>
+<mat-sidenav-container >
+<mat-sidenav  #sidenav opened="true" mode="side">
+<mat-nav-list >
+  <a mat-list-item  routerLink="../main" matTooltip="HOME" id="hov"><mat-icon id="iclass">home</mat-icon></a>
+  <a mat-list-item  routerLink="../high" matTooltip="PRIORITIZE"><mat-icon id="iclass">priority_high</mat-icon></a>
+  <a mat-list-item  routerLink="../today" matTooltip="TODAYS TASK"><mat-icon id="iclass">today</mat-icon></a>
+  <a mat-list-item routerLink="../archive"matTooltip="YOUR ARCHIVES" ><mat-icon id="iclass">archive</mat-icon></a>
+</mat-nav-list>
+</mat-sidenav>
+<mat-sidenav-content>
+  <div style="height:88vh;">
+  
+    <body style="width: 100%; height:100%;" >
+      <!--Generate Cards Dynamically -->
+    <div style="display: flex;flex-wrap: wrap; z-index:8;text-align: center;">
+    <mat-card *ngFor="let value of filteredNotes" style="background-color:white; box-shadow:2px solid black;">
+        <mat-card-header style="height:40px;text-align:center;font-size:x-large;">{{value.taskName}}</mat-card-header>
+        <div style="display: flex;">
+        <button mat-stroked-button color="primary" style="font-size: small; width:fit-content;">id:{{value.taskid}}</button>
+        <button mat-raised-button color="disabled" style="width: fit-content;"><mat-icon style="color:chocolate;">notification_important</mat-icon>Priority:{{value.priority}}</button>
+        </div>
+        <!-- <img mat-card-xl-image src={{value.imageurl}} > -->
+        <mat-card-content class="raised">{{value.category}}</mat-card-content>
+        <mat-card-content class="raised">{{value.taskDesc}}</mat-card-content>
+  
+        <mat-card-footer style="margin-bottom:10px;">
+        {{value.status}}
+        </mat-card-footer>
+    <mat-card-footer>
+        <button mat-raised-button color="primary" id="datebut"><mat-icon>calendar_today</mat-icon>Due:
+            {{value.dueDate | date}}</button>
+      <a routerLink="../edit/{{value.taskid}}">
+            <button mat-flat-button color="accent" style="margin-left:7px;">
+              <mat-icon>edit</mat-icon>
+            </button>
+      </a>
+      <button mat-flat-button color="accent" style="margin-left:7px;">
+        <mat-icon>archive</mat-icon>
+      </button>
+      
+    </mat-card-footer>
+    </mat-card>
+    </div>
+    </body>
+  </div>
+</mat-sidenav-content>
+</mat-sidenav-container>
+<!--filter bar ends  -->
+</html>

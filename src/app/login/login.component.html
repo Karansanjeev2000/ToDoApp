@@ -1,0 +1,41 @@
+
+<html>
+<body style="width:100%; border: 1px solid;" background="../assets/bgg.jpg">
+<form id="loginForm" #loginForm="ngForm" (ngSubmit)="loginProcess()" style="width:fit-content;margin-left:45%;margin-top:5%">
+    <mat-card style="padding-bottom:20px;">
+        <mat-card-title style="background-color:rgb(237, 211, 98);">
+    <h2 style="padding-left:35%;">LOGIN</h2>
+</mat-card-title>
+<mat-card-content>
+    <mat-form-field style="display: block;margin-top:30px;">
+        <mat-label>UserEmail</mat-label>
+        <input matInput type="text" required placeholder="Email" name="userEmail" #userEmail="ngModel" [(ngModel)] = "user.userEmail" [email]="true"  pattern="[a-z]+[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+        <div *ngIf="userEmail?.invalid &&  userEmail?.touched">
+            <mat-error *ngIf="userEmail.errors?.['required']">
+                 Email cannot be empty.
+            </mat-error>
+            <mat-error *ngIf="userEmail.errors?.['pattern']">
+               Email is in invalid format.
+            </mat-error>
+         </div>
+    </mat-form-field>
+</mat-card-content>
+<mat-card-content  >
+   <mat-form-field style="display: block;">
+    <mat-label>Password</mat-label>
+    <input matInput type="password" required placeholder="password" name="userPassword" #userPassword="ngModel" [(ngModel)] = "user.userPassword">
+    <div *ngIf="userPassword?.invalid && (userPassword?.dirty || userPassword?.touched)">
+        <mat-error *ngIf="userPassword.errors?.['required']">
+              Enter Password
+        </mat-error>
+     </div>
+</mat-form-field>
+</mat-card-content>
+
+<mat-card-footer>
+<button mat-raised-button class="primary" type="submit"  [disabled]="loginForm.invalid"  color="primary" style="margin-left:30%;">Sign in</button>
+</mat-card-footer>
+</mat-card>
+</form>
+</body>
+</html>

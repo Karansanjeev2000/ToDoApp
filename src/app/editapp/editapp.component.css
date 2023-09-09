@@ -1,0 +1,29 @@
+mat-form-field{
+    color: #ff6666;
+    margin-right:10px;
+    margin-left: 10px;
+ }
+ 
+ div{
+     mat-form-field{
+         width: 100%;
+     }
+ }
+ .container{
+     /* background-color: #ffcc66; */
+     background:linear-gradient(to right, #ff6666 0%, #ffcc66 90%);
+     padding-top:20px;
+ }
+ 
+ #titletag{
+     background:linear-gradient(to right, #ff6666 0%, #ffcc66 90%); 
+     margin-bottom:0%;
+     text-align:center;
+     width:100%;border-radius:2px;
+    
+ }
+ button{
+     margin-left:100px;
+     margin-bottom:30px;
+ }
+ 
