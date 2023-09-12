@@ -1,4 +1,4 @@
-<html style="display:inline;">
+<html >
 <mat-toolbar>
   <mat-toolbar-row>
   <button mat-icon-button  (click)="sidenav.toggle();"><mat-icon >vertical_split</mat-icon></button>
@@ -15,20 +15,30 @@
 </mat-nav-list>
 </mat-sidenav>
 <mat-sidenav-content>
-  <div style="height:88vh;">
+  <div >
   
-    <body style="width: 100%; height:100%;" background="../../assets/bgg.jpg">
+    <body  background="../../assets/web.jpg">
       <!--Generate Cards Dynamically -->
     <div style="display: flex;flex-wrap: wrap; z-index:8;text-align: center;">
-    <mat-card *ngFor="let value of filteredNotes" style="background-color:white; box-shadow:2px solid black;">
+    <mat-card *ngFor="let value of filteredNotes" style="background-color:white;width:350px ;box-shadow:2px solid black;">
         <mat-card-header style="height:40px;text-align:center;font-size:x-large;">{{value.taskName}}</mat-card-header>
         <div style="display: flex;">
             <button mat-stroked-button color="primary" style="font-size: small; width:fit-content;">Satus:{{value.status}}</button>
-            <button mat-raised-button color="disabled" style="width: fit-content;"><mat-icon style="color:chocolate;">notification_important</mat-icon>Priority:{{value.priority}}</button>
+            <button mat-raised-button color="disabled" style="width:fit-content;margin-left:30px;"><mat-icon style="color:chocolate;">notification_important</mat-icon>Priority:{{value.priority}}</button>
             </div>
-            <!-- <img mat-card-xl-image src={{value.imageurl}} > -->
+            
             <mat-card-content class="raised" style="font-family:monospace;font-weight: bold;font-size: large;">{{value.category}}<mat-icon style="color: chocolate;margin-top:10px;">loyalty</mat-icon></mat-card-content>
-            <mat-card-content class="raised" style="text-decoration: underline;font-size: medium;color: black;margin-top: 10px;">Desc:{{value.taskDesc}}</mat-card-content>
+            <mat-expansion-panel  style="margin-top: 10px;" hideToggle>
+              <mat-expansion-panel-header>
+                <mat-panel-title style="text-align:justify;font-size: medium;color:rgb(0, 83, 128);margin-right:10px;">
+                 Description
+                </mat-panel-title>
+                <mat-panel-description>
+                  Click to view in Detail
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <p>{{value.taskDesc}}</p>
+            </mat-expansion-panel>
       
             <mat-card-footer style="margin-bottom:10px;">
             
@@ -37,12 +47,12 @@
         <button mat-raised-button color="primary" id="datebut"><mat-icon>calendar_today</mat-icon>Due:
             {{value.dueDate | date}}</button>
 
-    <button mat-flat-button color="accent" style="margin-left:7px;background-color: rgb(223, 103, 103);" (click)="deleteThis(value.taskid)" matTooltip="DELETE FOREVER">
-        <mat-icon>delete_forever</mat-icon>
+    <button mat-raised-button style="margin-left:7px;" (click)="deleteThis(value.taskid)" matTooltip="DELETE FOREVER">
+        <mat-icon style="color:coral;font-size:large;">delete_forever</mat-icon>
     </button>
 
-      <button mat-flat-button color="accent" style="margin-left:7px;background-color: rgb(223, 103, 103);" (click)="setStatus(value.taskid)"  matTooltip="unArchive">
-        <mat-icon>unarchive</mat-icon>
+      <button mat-raised-button  style="margin-left:7px;" (click)="setStatus(value.taskid)"  matTooltip="unArchive">
+        <mat-icon style="color:rgb(146, 99, 146);font-size:large;">unarchive</mat-icon>
       </button>
       
     </mat-card-footer>

@@ -1,29 +1,74 @@
-mat-form-field{
-    color: #ff6666;
-    margin-right:10px;
-    margin-left: 10px;
- }
+mat-button-toggle{
+    margin-left:2px;
+}
+mat-card{
+    margin-top:40px;
+    margin-left:30px;
  
- div{
-     mat-form-field{
-         width: 100%;
-     }
- }
- .container{
-     /* background-color: #ffcc66; */
-     background:linear-gradient(to right, #ff6666 0%, #ffcc66 90%);
-     padding-top:20px;
- }
- 
- #titletag{
-     background:linear-gradient(to right, #ff6666 0%, #ffcc66 90%); 
-     margin-bottom:0%;
-     text-align:center;
-     width:100%;border-radius:2px;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+
+html,body{
+    margin:0;
+    overflow: auto;
+    background-size: cover;
+    width: 100%;
+    height:75vh;
     
- }
- button{
-     margin-left:100px;
-     margin-bottom:30px;
- }
- 
+  
+}
+
+#searchcomp{
+    margin-left: 150px;
+    margin-right: 200px;
+}
+
+a:hover {
+    background: rgb(51,37,89);
+    background: linear-gradient(236deg, rgba(51,37,89,1) 0%, rgba(0,193,255,1) 100%);
+    }
+
+mat-card-header{
+    background: rgb(51,37,89);
+    background: linear-gradient(236deg, rgba(51,37,89,1) 0%, rgba(0,193,255,1) 100%);
+    COLOR:white;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+#datebut{
+   background-color:rgb(0, 83, 128) ;
+}
+
+#iclass{
+    color: white;
+    padding:10px;
+    border-radius:50%;
+    background-color:rgb(0, 83, 128) ;
+    }
+
+
+mat-nav-list a{
+    margin-top: 5px;
+    margin-bottom:5px;
+}
+
+
+mat-button-toggle:hover,mat-button-toggle:active{
+    background: rgb(51,37,89);
+    background: linear-gradient(236deg, rgba(51,37,89,1) 0%, rgba(0,193,255,1) 100%);
+    }
+
+    mat-form-field{
+            margin-left: 30px;
+    }
+    #sub{
+            margin-left:20px;
+            margin-right: 20px;
+    }
+    
+mat-button-toggle{
+    padding-bottom:15px;
+    color:white;
+    background-color:rgb(0, 83, 128) ;
+}

@@ -4,6 +4,7 @@ import { UserServiceService } from '../services/user-service.service';
 import { Todo } from '../models/Todo';
 import { MatDialog } from '@angular/material/dialog';
 import { HttpClient } from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-high-priority',
@@ -19,7 +20,7 @@ export class HighPriorityComponent {
   searchInput:string='';
   Status:string='pending';
 
-  constructor(private ser:UserServiceService, private http:HttpClient,private dialog:MatDialog){}
+  constructor(private ser:UserServiceService, private http:HttpClient,private dialog:MatDialog,private toastr: ToastrService){}
 
   public onValChange(val: string) {
     this.searchInput = val;
@@ -47,6 +48,39 @@ export class HighPriorityComponent {
  
   }
  
+  minDate=new Date();
+  obj: Todo = {taskid:'', taskName:'', priority:'',category:'',taskDesc:'',dueDate:this.minDate};
+
+  setStatus(id:string){ 
+    if(confirm("Are you Sure you want to archive?")){
+
+      this.ser.getNote(id).subscribe((data:any) => {
+        this.obj = data;
+        
+        this.obj.status="completed";
+        console.log(this.obj);
+    
+        this.ser.updateTask(this.obj).subscribe({
+          next: exp => {
+            this.toastr.success("Task Archive completed","Update Complete");
+              this.getNotes();
+        
+          },
+          error:err => {
+              this.toastr.success("Error in archiving note pls try later");
+            
+          }
+          });
+      });
+
+    } 
+    else{
+      this.dialog.closeAll();
+      
+    } 
+  
+  
+  }
 
 
 

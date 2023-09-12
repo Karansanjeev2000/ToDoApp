@@ -3,7 +3,7 @@
 <mat-toolbar>
   <mat-toolbar-row>
   <button mat-icon-button  (click)="sidenav.toggle();"><mat-icon >vertical_split</mat-icon></button>
-    <h3>Todays To do</h3>
+    <h3>LIST ALL TASKS TILL DATE</h3>
 </mat-toolbar-row>
 </mat-toolbar>
 <mat-sidenav-container >
@@ -16,34 +16,45 @@
 </mat-nav-list>
 </mat-sidenav>
 <mat-sidenav-content>
-  <div style="height:88vh;">
+  <div >
   
-    <body style="width: 100%; height:100%;" >
+    <body background="../../assets/web.jpg" >
       <!--Generate Cards Dynamically -->
     <div style="display: flex;flex-wrap: wrap; z-index:8;text-align: center;">
-    <mat-card *ngFor="let value of filteredNotes" style="background-color:white; box-shadow:2px solid black;">
+    <mat-card *ngFor="let value of filteredNotes" style="background-color:white;width:350PX; box-shadow:2px solid black;">
         <mat-card-header style="height:40px;text-align:center;font-size:x-large;">{{value.taskName}}</mat-card-header>
         <div style="display: flex;">
-        <button mat-stroked-button color="primary" style="font-size: small; width:fit-content;">id:{{value.taskid}}</button>
-        <button mat-raised-button color="disabled" style="width: fit-content;"><mat-icon style="color:chocolate;">notification_important</mat-icon>Priority:{{value.priority}}</button>
-        </div>
-        <!-- <img mat-card-xl-image src={{value.imageurl}} > -->
-        <mat-card-content class="raised">{{value.category}}</mat-card-content>
-        <mat-card-content class="raised">{{value.taskDesc}}</mat-card-content>
-  
-        <mat-card-footer style="margin-bottom:10px;">
-        {{value.status}}
-        </mat-card-footer>
-    <mat-card-footer>
+        <button mat-stroked-button color="primary" style="font-size: small; width:fit-content;">status:{{value.status}}</button>
+        <button mat-raised-button color="disabled" style="width: fit-content;margin-left:30px;"><mat-icon style="color:chocolate;">notification_important</mat-icon>Priority:{{value.priority}}</button>
+      </div>
+      <!-- <img mat-card-xl-image src={{value.imageurl}} > -->
+      <mat-card-content class="raised" style="font-family:monospace;font-weight: bold;font-size: large;">{{value.category}}<mat-icon style="color: chocolate;margin-top:10px;">loyalty</mat-icon></mat-card-content>
+      <mat-expansion-panel  style="margin-top:10px;" hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title style="text-align:justify;font-size: medium;color:rgb(0, 83, 128);margin-right:10px;">
+           Description
+          </mat-panel-title>
+          <mat-panel-description>
+            Click to view in Detail
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>{{value.taskDesc}}</p>
+      </mat-expansion-panel>
+
+        <mat-card-footer style="margin-top:10px;">
+      
+       
+    
         <button mat-raised-button color="primary" id="datebut"><mat-icon>calendar_today</mat-icon>Due:
             {{value.dueDate | date}}</button>
       <a routerLink="../edit/{{value.taskid}}">
-            <button mat-flat-button color="accent" style="margin-left:7px;">
-              <mat-icon>edit</mat-icon>
-            </button>
+        <button mat-raised-button color="accent" style="margin-left:7px;background-color:white" matTooltip="EDIT THIS" appearance="legacy" >
+          <mat-icon style="color: rgb(14, 109, 76);">edit</mat-icon>
+        </button>
       </a>
-      <button mat-flat-button color="accent" style="margin-left:7px;">
-        <mat-icon>archive</mat-icon>
+
+      <button mat-raised-button color="accent" style="margin-left:7px;background-color:white"  (click)="setStatus(value.taskid)" matTooltip="ARCHIVE THIS" appearance="legacy">
+        <mat-icon style="color:palevioletred">archive</mat-icon>
       </button>
       
     </mat-card-footer>

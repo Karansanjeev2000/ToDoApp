@@ -34,6 +34,8 @@ import { TodaysComponent } from './todays/todays.component';
 import { ArchiveComponent } from './archive/archive.component';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { RegisterComponent } from './register/register.component';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatBadgeModule} from '@angular/material/badge';
 
 
 @NgModule({
@@ -73,7 +75,9 @@ import { RegisterComponent } from './register/register.component';
     BrowserAnimationsModule,
     MatListModule,
     MatSidenavModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatExpansionModule,
+    MatBadgeModule
     
   ],
   providers: [ {

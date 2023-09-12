@@ -1,13 +1,27 @@
-footer{ 
-    position: fixed; 
-    bottom: 0px; 
-    height:40px;
-    background-color:rgb(237, 211, 98);
-    width:100%; 
+.footer {
+
+    height:40px; 
+    width: 100%; 
+    background:rgb(0, 83, 128);
+   
+ 
+
+    position: fixed;
+    bottom: 0pt;
+    left: 0pt;
+
+}   
+
+.footer_contents {
+
+    height:40px; 
+    width: 100%; 
+    margin:auto;
+
 }
 mat-toolbar{
-    background: rgb(34,193,195);
-    background: linear-gradient(164deg, rgba(34,193,195,1) 0%, rgba(241,184,56,1) 100%);
+    background: rgb(0, 83, 128);
+    color:white;
 }
 
 body{

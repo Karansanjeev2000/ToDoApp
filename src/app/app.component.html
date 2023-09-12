@@ -1,22 +1,24 @@
-<html>
+<html >
     <head>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Trirong">
     </head>
-    <mat-toolbar style="background-color:rgb(237, 211, 98);">
-    <a routerLink="/login" routerLinkActive="active" (click)="logoutf()"><button mat-raised-button color="warn">Login/logout</button></a>
-    <a routerLink="/register" routerLinkActive="active" style="margin-left: 20px;"><button mat-raised-button color="warn">Register</button></a>
-    <span id="title" style="margin-left:30%; font-size: larger;font-family:Trirong,serif;" >NOTEBOOK NATION</span>   
+    <mat-toolbar>
+    <span id="title" style="margin-left:50px; font-size: larger;font-weight: bold;font-family:Trirong,serif;"><img src="../assets/nn.jpg" width="40px" height="40px" >NOTEBOOK NATION</span>   
+    <a routerLink="/login" routerLinkActive="active" (click)="logoutf()" style="margin-left:50%;"><button mat-raised-button color="warn">Login/logout</button></a>
     </mat-toolbar>
-   
-<body >
-    <router-outlet></router-outlet>
+<body style="height:fit-content;">
+    <router-outlet  ></router-outlet>
 </body>
-    
-    <footer>
-        <div style="margin-top:5px;font-size:large;display:flex; margin-left:40%;">
-        <p style="margin-top:10px;">ToDoNotes.&copy; All Rights Reserved </p> 
+<br>
+<br>
+<div class="footer" style="font-size:large;display:flex; ">
+
+    <div class="footer_contents">
+        <p style="margin-top:10px;margin-left:40%;margin-top:5px;">NoteBook Nation.&copy; All Rights Reserved </p> 
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
-        </div>
-    </footer>
+    </div>
+
+</div>
+   
     
 </html>
