@@ -14,9 +14,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class TodaysComponent {
 
-  notes:Todo[]=[];
-  filteredNotes:Todo[]=[];
-  minDate = new Date();
+ 
 
   viewMode: string | undefined;
   searchInput:string='';
@@ -35,7 +33,9 @@ export class TodaysComponent {
     this.getNotes();
    }
 
-
+   notes:Todo[]=[];
+   filteredNotes:Todo[]=[];
+   minDate = new Date();
 
 // subscibe to service and get data and put in empty notes array declared above to create a array of data.
   getNotes() {
@@ -45,7 +45,9 @@ export class TodaysComponent {
         const now = new Date();
         now.setHours(0,0,0,0);
  console.log(now);
-        this.filteredNotes=this.notes.filter(item => now >= new Date(item.dueDate));
+ 
+        this.filteredNotes=this.notes.filter(item => new Date(item.dueDate)>=now);
+     
       }
     );
  console.log(this.filteredNotes.length);

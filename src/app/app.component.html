@@ -4,7 +4,8 @@
     </head>
     <mat-toolbar>
     <span id="title" style="margin-left:50px; font-size: larger;font-weight: bold;font-family:Trirong,serif;"><img src="../assets/nn.jpg" width="40px" height="40px" >NOTEBOOK NATION</span>   
-    <a routerLink="/login" routerLinkActive="active" (click)="logoutf()" style="margin-left:50%;"><button mat-raised-button color="warn">Login/logout</button></a>
+    <a routerLink="/login" routerLinkActive="active"  style="margin-left:50%;"><button mat-raised-button color="warn">Login</button></a>
+    <a routerLink="/login" routerLinkActive="active" (click)="logoutf()" style="margin-left:2%;"><button mat-raised-button color="warn">Logout</button></a>
     </mat-toolbar>
 <body style="height:fit-content;">
     <router-outlet  ></router-outlet>

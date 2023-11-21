@@ -71,7 +71,7 @@ export class AllTaskComponent implements OnInit {
     return null;
   }
 
-//card filteration based on cakes/chocolates or so...
+//card filteration based on 
   searchInput:string='';
   onfilter(){
     console.log(this.searchInput);
